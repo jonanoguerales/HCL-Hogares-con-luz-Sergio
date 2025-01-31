@@ -1,0 +1,67 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import logoHeader from "../assets/logo.webp";
+
+export const Props = {
+  title: "Transformamos tu hogar en el espacio de tus sueños",
+  subtitle: "Reformas integrales con calidad y garantía.",
+};
+---
+
+<header>
+  <nav>
+    <img
+      id="background"
+      src={logoHeader.src}
+      alt="logo principal de la empresa"
+      fetchpriority="high"
+      class="logo"
+    />
+    <div class="internal-links">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/servicios">Servicios</HeaderLink>
+      <HeaderLink href="/porqueeleguirnos">¿Por qué elegirnos?</HeaderLink>
+    </div>
+  </nav>
+</header>
+<style>
+  header {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 1em;
+    position: fixed;
+    width: 100%;
+    background: white;
+    box-shadow: 0 2px 8px rgba(var(--black), 5%);
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1em;
+  }
+
+  h2 a,
+  h2 a.active {
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav a {
+    padding: 1em 0.5em;
+    color: var(--black);
+    border-bottom: 4px solid transparent;
+    text-decoration: none;
+  }
+  nav a.active {
+    text-decoration: none;
+    border-bottom-color: var(--accent);
+  }
+</style>

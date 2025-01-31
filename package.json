@@ -1,0 +1,18 @@
+{
+  "name": "bustling-bar",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@tailwindcss/vite": "^4.0.2",
+    "astro": "^5.2.3",
+    "autoprefixer": "^10.4.20",
+    "tailwindcss": "^4.0.2"
+  }
+}
