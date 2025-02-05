@@ -19,35 +19,32 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 </a>
 
 <style>
-/* Base del enlace */
 .link-base {
-  display: inline-block;         /* Necesario para pseudo-elementos */
-  text-decoration: none;         /* Sin subrayado, lo simulamos nosotros */
-  color: #333;                   /* Color por defecto */
+  display: inline-block;         
+  text-decoration: none;        
+  color: #333;                   
   transition: color 0.2s;
 }
 
 .link-base:hover {
-  color: #FF9800;                /* Hover color naranja */
+  color: #FF9800;                
 }
 
-/* Enlace activo */
 .link-base.active {
-  color: #FF9800;                /* Naranja para el enlace activo */
+  color: #FF9800;              
   font-weight: bold;
-  position: relative;            /* Para que ::after se posicione dentro */
+  position: relative;           
 }
 
-/* La “sombra” a modo de subrayado */
 .link-base.active::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;                  /* Ajusta si quieres la “sombra” más lejos/cerca */
+  bottom: -4px;                  
   width: 100%;
   height: 3px;
-  background-color: #FF9800; /* Color y opacidad de la sombra */
-  border-radius: 2px;                 /* Suavizar bordes de la franja */
-  pointer-events: none;               /* Que no interfiera con el enlace */
+  background-color: #FF9800;
+  border-radius: 2px;                 
+  pointer-events: none;              
 }
 </style>
