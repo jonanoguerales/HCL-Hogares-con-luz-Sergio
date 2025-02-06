@@ -1,0 +1,220 @@
+---
+import Testimonio from "./Testimonio.astro";
+import T1 from "../assets/imgTestimonios/T1.webp";
+import T2 from "../assets/imgTestimonios/T2.webp";
+import T3 from "../assets/imgTestimonios/T3.webp";
+import T4 from "../assets/imgTestimonios/T4.webp";
+import T5 from "../assets/imgTestimonios/T5.webp";
+import T6 from "../assets/imgTestimonios/T6.webp";
+import T7 from "../assets/imgTestimonios/T7.webp";
+import IconoGoogle from "@/assets/icons/IconoGoogle.astro";
+---
+
+<script type="module">
+  import KeenSlider from "https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm";
+  document.addEventListener("astro:page-load", function () {
+    const keenSlider = new KeenSlider(
+      "#keen-slider",
+      {
+        loop: true,
+        slides: {
+          origin: "center",
+          perView: 1,
+          spacing: 16,
+        },
+        breakpoints: {
+          "(min-width: 1281px)": {
+            slides: {
+              origin: "auto",
+              perView: 3,
+              spacing: 16,
+            },
+          },
+          "(min-width: 1638px)": {
+            slides: {
+              origin: "auto",
+              perView: 4,
+              spacing: 16,
+            },
+          },
+          "(min-width: 2100px)": {
+            slides: {
+              origin: "auto",
+              perView: 5,
+              spacing: 16,
+            },
+          },
+        },
+      },
+      [],
+    );
+    const keenSliderPrevious = document.getElementById("keen-slider-previous");
+    const keenSliderNext = document.getElementById("keen-slider-next");
+
+    keenSliderPrevious?.addEventListener("click", () => keenSlider.prev());
+    keenSliderNext?.addEventListener("click", () => keenSlider.next());
+    const blockquotes = document.getElementsByClassName("seguir"); // Solo elementos con la clase "seguir"
+    let maxHeight = 100; // Altura máxima deseada
+
+    for (let i = 0; i < blockquotes.length; i++) {
+      const blockquote = blockquotes[i];
+      const paragraphs = blockquote.getElementsByTagName("p");
+      for (let j = 0; j < paragraphs.length; j++) {
+        const paragraph = paragraphs[j];
+        const paragraphHeight = paragraph.clientHeight;
+
+        if (paragraphHeight > maxHeight) {
+          const button = document.createElement("button"); // Crear un nuevo botón
+          button.textContent = "Seguir leyendo";
+          button.style.backgroundColor = "#ff6900";
+          button.style.color = "white";
+          button.style.padding = "3px 10px";
+          button.style.border = "none";
+          button.style.cursor = "pointer";
+          button.style.borderRadius = "4px";
+          button.style.marginTop = "10px";
+          button.style.fontSize = "smaller";
+          button.addEventListener("mouseover", function () {
+            button.style.backgroundColor = "#ffedd4";
+            button.style.color = "#ff6900";
+          });
+          button.addEventListener("mouseout", function () {
+            button.style.backgroundColor = "#ff6900";
+            button.style.color = "white";
+          });
+          blockquote.appendChild(button); // Agregar el botón al bloque de citas
+
+          button.addEventListener("click", function () {
+            if (paragraph.style.maxHeight === "none") {
+              paragraph.style.maxHeight = maxHeight + "px";
+              this.textContent = "Seguir leyendo";
+              blockquote.classList.add("xl:h-[280px]"); // Agregar la clase al blockquote
+            } else {
+              paragraph.style.maxHeight = "none";
+              this.textContent = "Leer menos";
+              blockquote.classList.remove("xl:h-[280px]"); // Eliminar la clase del blockquote
+            }
+          });
+
+          paragraph.style.maxHeight = maxHeight + "px";
+          break; // Salir del bucle al encontrar un párrafo que cumple la condición
+        }
+      }
+    }
+  });
+</script>
+
+<section class="bg-white overflow-hidden">
+  <div class="mx-auto w-full px-4 py-12 sm:px-16 lg:py-16 xl:py-24">
+    <div class="md:flex md:items-center md:justify-between px-8 gap-4">
+      <h2 class="mt-2 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+        Testimonios de nuestros clientes
+      </h2>
+
+      <a
+        href="https://google.es"
+        target="_blank"
+        class="max-md:w-full justify-center mt-6 inline-flex shrink-0 items-center float-end gap-2 rounded-full border border-orange-600 px-5 py-3 text-orange-600 transition hover:bg-orange-600 hover:text-white md:mt-0"
+      >
+        <span class="font-medium"> Reseñas </span>
+
+        <IconoGoogle class="size-10" />
+      </a>
+    </div>
+    <div class="mx-6 my-8 lg:col-span-3 lg:mx-0">
+      <div id="keen-slider" class="keen-slider">
+        <Testimonio
+        texto="Contratar sus servicios fue la mejor decisión que pudimos tomar. Nuestro salón quedó irreconocible, moderno y acogedor. ¡Altamente recomendados!"
+        nombre="Carlos Fernández"
+        img={T1}
+        clase="object-cover"
+        claseblockquote=""
+      />
+      <Testimonio
+        texto="El equipo trabajó con mucha profesionalidad y atención al detalle. Mi cocina parece sacada de una revista. Gracias por hacer realidad mi sueño."
+        nombre="Ana García"
+        img={T2}
+        clase="object-cover"
+        claseblockquote=""
+      />
+      <Testimonio
+        texto="Teníamos dudas sobre renovar nuestro baño, pero con su asesoramiento todo fue sencillo y rápido. ¡Estamos encantados con el resultado!"
+        nombre="Laura Martínez"
+        img={T3}
+        clase="object-cover"
+        claseblockquote=""
+      />
+      <Testimonio
+        texto="La comunicación fue excelente desde el primer día. Cumplieron con los plazos y el presupuesto. Sin duda, una experiencia de 10."
+        nombre="David López"
+        img={T4}
+        clase="object-cover"
+        claseblockquote=""
+      />
+      <Testimonio
+        texto="El resultado superó nuestras expectativas. Nuestra terraza es ahora el lugar favorito de la casa. ¡Gracias al equipo por su gran trabajo!"
+        nombre="María Sánchez"
+        img={T5}
+        clase="object-cover"
+        claseblockquote=""
+      />
+      <Testimonio
+        texto="Todo el proceso fue claro y transparente. Nos guiaron en cada decisión para asegurarse de que estuviéramos satisfechos. ¡Totalmente recomendados!"
+        nombre="Miguel Torres"
+        img={T6}
+        clase="object-cover"
+        claseblockquote=""
+      />
+      <Testimonio
+        texto="Profesionales y detallistas. Nuestra reforma fue mucho mejor de lo que habíamos imaginado. Recomiendo sus servicios sin dudarlo."
+        nombre="Isabel Rodríguez"
+        img={T7}
+        clase="object-cover"
+        claseblockquote=""
+      />
+      
+      </div>
+    </div>
+
+    <div class="mt-8 flex gap-4 lg:mt-0 justify-center">
+      <button
+        aria-label="Previous slide"
+        id="keen-slider-previous"
+        class="rounded-full border border-orange-600 p-3 text-orange-600 transition hover:bg-orange-600 hover:text-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-5 rtl:rotate-180"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5"></path>
+        </svg>
+      </button>
+      <button
+        aria-label="Next slide"
+        id="keen-slider-next"
+        class="rounded-full border border-orange-600 p-3 text-orange-600 transition hover:bg-orange-600 hover:text-white"
+      >
+        <svg
+          class="size-5 rtl:rotate-180"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 5l7 7-7 7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
