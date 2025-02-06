@@ -1,50 +1,59 @@
 ---
-import bento1 from "@/assets/bento1.webp";
+import escuchamos from "@/assets/imgSectionCards/escuchamos.jpg";
+import diseñamos from "@/assets/imgSectionCards/diseñamos.jpg";
+import ejecutamos from "@/assets/imgSectionCards/ejecutamos.jpg";
+import entregamos from "@/assets/imgSectionCards/entregamos.jpg";
 export const steps = [
   {
     title: "Escuchamos",
     description:
       "Respondemos a tu solicitud en 24 horas, visitamos la vivienda y elaboramos una propuesta adaptada 100% a tus necesidades.",
+      image: escuchamos.src
   },
   {
     title: "Diseñamos",
     description:
       "Creamos diseños personalizados basados en tus gustos y necesidades para que tu hogar sea único.",
+      image: diseñamos.src
   },
   {
     title: "Ejecutamos",
     description:
       "Llevamos a cabo cada detalle del proyecto con precisión y profesionalidad.",
+      image: ejecutamos.src
   },
   {
     title: "Entregamos",
     description:
       "Entregamos el proyecto terminado, listo para disfrutar. La satisfacción del cliente es nuestra prioridad.",
+      image: entregamos.src
   },
 ];
 ---
 
 <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto text-center">
+  <div class="max-w-7xl mx-auto">
+  <div class="max-w-2xl mx-auto lg:text-center">
     <h2 class="mt-2 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
       Comenzar no puede ser más sencillo
     </h2>
   </div>
-  <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="mx-auto mt-10 grid max-w-2xl gap-6 sm:grid-cols-2 lg:mt-16 lg:max-w-7xl lg:grid-cols-4">
     {steps.map((step) => (
       <div class="group relative rounded-lg overflow-hidden flex items-center">
         <img
-          src={bento1.src}
+          src={step.image}
           alt={step.title}
           class="h-[91%] w-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-lg shadow-lg"
         />
         <div class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-lg shadow-lg">
           <p class="text-center text-white font-semibold px-4">{step.description}</p>
         </div>
-        <div class="absolute w-2xs bottom-0 left-[6%] right-0 bg-white py-3 text-center transition-all duration-300 group-hover:translate-y-full rounded-lg" style="border: 1px solid #8080801f">
+        <div class="absolute w-[80%] bottom-0 left-[10%] right-0 bg-white py-3 text-center transition-all duration-300 group-hover:translate-y-full rounded-lg" style="border: 1px solid #8080801f">
           <h3 class="text-lg font-bold text-center text-gray-800">{step.title}</h3>
         </div>
       </div>
     ))}
+  </div>
   </div>
 </section>
