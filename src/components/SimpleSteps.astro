@@ -39,17 +39,17 @@ export const steps = [
     </h2>
   </div>
   <div class="mx-auto mt-10 grid max-w-2xl gap-6 sm:grid-cols-2 lg:mt-16 lg:max-w-7xl lg:grid-cols-4">
-    {steps.map((step) => (
-      <div class="group relative rounded-lg overflow-hidden flex items-center">
+    {steps.map((step, i) => (
+      <div class="card group relative rounded-lg overflow-hidden flex items-center"  id={"card-" + i}>
         <img
           src={step.image}
           alt={step.title}
           class="h-[91%] w-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-lg shadow-lg"
         />
-        <div class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-lg shadow-lg">
+        <div class="overlay absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-lg shadow-lg">
           <p class="text-center text-white font-semibold px-4">{step.description}</p>
         </div>
-        <div class="absolute w-[80%] bottom-0 left-[10%] right-0 bg-white py-3 text-center transition-all duration-300 group-hover:translate-y-full rounded-lg" style="border: 1px solid #8080801f">
+        <div class="title-box absolute w-[80%] bottom-0 left-[10%] right-0 bg-white py-3 text-center transition-all duration-300 group-hover:translate-y-full rounded-lg" style="border: 1px solid #8080801f">
           <h3 class="text-lg font-bold text-center text-gray-800">{step.title}</h3>
         </div>
       </div>
@@ -57,3 +57,23 @@ export const steps = [
   </div>
   </div>
 </section>
+<script is:inline>
+  // Selecciona todos los contenedores .card
+  document.querySelectorAll('.card').forEach((card) => {
+    // Al hacer clic en el contenedor
+    card.addEventListener('click', () => {
+      // Alternar clase 'show-overlay' (por ejemplo)
+      card.classList.toggle('show-overlay')
+    })
+  })
+</script>
+
+<style>
+/* Estilos extra para mostrar/ocultar en móviles con la clase "show-overlay" */
+.card.show-overlay .overlay {
+  opacity: 1 !important; /* Fuerza el overlay visible */
+}
+.card.show-overlay .title-box {
+  transform: translateY(100%) !important; /* Sube el título igual que en hover */
+}
+</style>
